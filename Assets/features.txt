@@ -1,0 +1,68 @@
+v.0.01
+Camera is done.
+Fire shot.
+Radar %20
+
+
+
+v.0.02
+-Ship changing
+-Ship Upgrade System
+-Basic Menu
+-Ship selector
+
+
+
+w= 20
+acc = 60
+speed = 60
+
+
+
+base weight,
+capacity weight,
+capacity,
+max speed,
+rotation speed,
+acceleration,
+attack,
+armor,
+crew capacity
+
+
+TODO
+Menu scene
+aim line,
+lock indicator,
+important place indicator,
+cooldown weapon,
+
+
+Hierarchy;
+Ship Itself
+	WeaponSlots
+		Weapon
+			bulletHole(can be coded)
+	Trails
+
+
+
+-- Ship:base
+	Slots:Vec3[]
+	
+
+-- shipComponent
+	Type:Enum {storage,extender,weapon,
+
+-- weapon
+	weaponType:Enum	
+	damage:int
+	weight:float
+	ammo:int
+	projectile:Prefab
+	attackPosition:vec2
+	attackSpeed:float
+	attack():void
+	reload():void
+
+-- 
