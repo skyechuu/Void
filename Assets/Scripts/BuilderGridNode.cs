@@ -11,9 +11,8 @@ public class BuilderGridNode : MonoBehaviour {
 	public ShipBodyMaterial material;
 
 	void Start(){
-		material.cell.pos = new Vector3(transform.position.x, transform.position.y, 0);
-		material.cell.col = GetComponent<SpriteRenderer>().color;
-		GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,0.2f);
+		material.cell = new Vector3(transform.position.x, transform.position.y, 0);
+		GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.2f);
 		if(isMain)
 			SelectNode();
 		//Debug.Log(material.cell.pos);
@@ -28,7 +27,7 @@ public class BuilderGridNode : MonoBehaviour {
 				GetComponent<SpriteRenderer>().color = Color.red;
 		}
 		else{
-			GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,0.7f);
+			GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.7f);
 		}
 	}
 
@@ -47,12 +46,12 @@ public class BuilderGridNode : MonoBehaviour {
 	void OnMouseExit(){
 		if(!isSelected){
 			if(isAvaliable)
-				GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,0.2f);
+				GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.2f);
 			else
-				GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,0.1f);
+				GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.1f);
 		}
 		else{
-			GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,1f);
+			GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,1f);
 		}
 	}
 
@@ -61,7 +60,7 @@ public class BuilderGridNode : MonoBehaviour {
 
 	public void SelectNode(){
 		isSelected = true;
-		GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,1f);
+		GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,1f);
 		transform.parent.GetComponent<BuilderGrid>().CheckAvaliableStates();
 		transform.localScale = Vector2.one * 0.95f;
 	}
@@ -69,7 +68,7 @@ public class BuilderGridNode : MonoBehaviour {
 	public void DeselectNode(){
 		if(!isMain){
 			isSelected = false;
-			GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,0.2f);
+			GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.2f);
 			transform.parent.GetComponent<BuilderGrid>().CheckAvaliableStates();
 			transform.localScale = Vector2.one * 0.8f;
 		}
@@ -79,11 +78,11 @@ public class BuilderGridNode : MonoBehaviour {
 		if(!isSelected){
 			if(a){
 				isAvaliable = a;
-				GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,0.2f);
+				GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.2f);
 			}
 			else{
 				isAvaliable = a;
-				GetComponent<SpriteRenderer>().color = new Color(material.cell.col.r,material.cell.col.g,material.cell.col.b,0.1f);
+				GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.1f);
 			}
 		}
 		else{

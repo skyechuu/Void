@@ -91,8 +91,8 @@ public class ShipGenerator : MonoBehaviour {
         go.transform.parent = transform;
         go.transform.localPosition = new Vector3(x / calculatedppu, y * (-1) / calculatedppu, 0f);
         shipSize++;
-        ShipMatrixCell smc = new ShipMatrixCell { pos = go.transform.position, col = Color.white };
-        go.GetComponent<ShipMaterialHolder>().cell = smc;
+        go.GetComponent<ShipMaterialHolder>().cell = go.transform.position;
+        go.GetComponent<SpriteRenderer>().sprite = Database.selfDb.GetMaterial(0);
         shipMatrix.Add(go.GetComponent<ShipMaterialHolder>().getMaterial());
         lastShipPart = go;
     }
@@ -108,7 +108,7 @@ public class ShipGenerator : MonoBehaviour {
             foreach(ShipBodyMaterial sbm in matrix){
                 GameObject go = Instantiate(pixelPrefab) as GameObject;
                 go.transform.parent = transform;
-                go.transform.localPosition = sbm.cell.pos + new Vector3(-4,4,0);
+                go.transform.localPosition = sbm.cell + new Vector3(-4,4,0);
                 if(go.transform.localPosition.x > xMax)
                     xMax = go.transform.localPosition.x;
                 if(go.transform.localPosition.x < xMin)
@@ -144,7 +144,7 @@ public class ShipGenerator : MonoBehaviour {
             foreach(ShipBodyMaterial sbm in matrix){
                 GameObject go = Instantiate(pixelPrefab) as GameObject;
                 go.transform.parent = transform;
-                go.transform.localPosition = sbm.cell.pos + new Vector3(-4,4,0);
+                go.transform.localPosition = sbm.cell + new Vector3(-4,4,0);
                 if(go.transform.localPosition.x > xMax)
                     xMax = go.transform.localPosition.x;
                 if(go.transform.localPosition.x < xMin)
@@ -161,6 +161,8 @@ public class ShipGenerator : MonoBehaviour {
             }
         }
     }
+
+
 
     
 

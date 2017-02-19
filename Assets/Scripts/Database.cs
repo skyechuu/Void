@@ -1,33 +1,49 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+[System.Serializable]
+public class MaterialSprites {
+	public int id;
+	public Sprite sprite;
+}
+
+[System.Serializable]
+public class MaterialStats {
+	public int id;
+	public string name;
+    public int defense;
+    public int health;
+    public int capacity;
+	public float weight;
+}
 public class Database : MonoBehaviour {
 
-	public List<ShipBodyMaterial> bodyMaterials;
+	public static Database selfDb;
+
 	public List<Item> items;
 
+	public List<MaterialSprites> materialSprites;
+	public List<MaterialStats> materialStats;
+
 	void Start(){
-		//items.Add(new ShipFuelTank("emerald",55,"kursunsuz benzin", 24, 8));
+		selfDb = this;
 	}
 
-	public ShipBodyMaterial getBodyMaterial(int id){
-		foreach(ShipBodyMaterial sbm in bodyMaterials){
-			if(sbm.stats.id == id){
-				return sbm;
+
+	public Sprite GetMaterial(int materialID){
+		List<Sprite> sprites = new List<Sprite>();
+		foreach(MaterialSprites ms in materialSprites){
+			if(ms.id == materialID){
+				sprites.Add(ms.sprite);
 			}
 		}
-		return new ShipBodyMaterial{};
-	}
-
-	public Item getItem(int id){
-		foreach(Item i in items){
-			if(i.id == id){
-				return i;
-			}
+		if(sprites.Count > 0){
+			return sprites[Random.Range(0,sprites.Count)];
 		}
-
-
-		return null;
+		else{
+			return null;
+		}
 	}
 
 

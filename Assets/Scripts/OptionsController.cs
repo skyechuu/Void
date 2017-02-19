@@ -117,7 +117,6 @@ public class OptionsController : MonoBehaviour {
             opt.constants.Add(new Constant("profile","default"));
             SaveGameOptions();
         }
-        
     }
 
     public static void LoadGameOptions(){

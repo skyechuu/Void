@@ -76,13 +76,9 @@ public class BuilderGrid : MonoBehaviour {
 			if(t.GetComponent<BuilderGridNode>().isSelected){
 				ShipSaveHolder ssh = new ShipSaveHolder();
 				//Debug.Log(t.GetComponent<BuilderGridNode>().material.getMaterial().cell.pos.x);
-				ssh.posX = t.GetComponent<BuilderGridNode>().material.cell.pos.x;
-				ssh.posY = t.GetComponent<BuilderGridNode>().material.cell.pos.y;
-				ssh.cr = t.GetComponent<BuilderGridNode>().material.cell.col.r;
-				ssh.cg = t.GetComponent<BuilderGridNode>().material.cell.col.g;
-				ssh.cb = t.GetComponent<BuilderGridNode>().material.cell.col.b;
-				ssh.ca = t.GetComponent<BuilderGridNode>().material.cell.col.a;
-				ssh.sms = t.GetComponent<BuilderGridNode>().material.stats;
+				ssh.posX = t.GetComponent<BuilderGridNode>().material.cell.x;
+				ssh.posY = t.GetComponent<BuilderGridNode>().material.cell.y;
+				//ssh.sms = t.GetComponent<BuilderGridNode>().material.stats;
 				ship.Add(ssh);
 			}
 		}
@@ -116,13 +112,9 @@ public class BuilderGrid : MonoBehaviour {
 		if(ship.Count>0){
 			foreach(ShipSaveHolder ssh in ship){
 				ShipBodyMaterial sbm = new ShipBodyMaterial();
-				sbm.cell.col.r = ssh.cr;
-				sbm.cell.col.g = ssh.cg;
-				sbm.cell.col.b = ssh.cb;
-				sbm.cell.col.a = ssh.ca;
-				sbm.cell.pos.x = ssh.posX;
-				sbm.cell.pos.y = ssh.posY;
-				sbm.stats = ssh.sms;
+				sbm.cell.x = ssh.posX;
+				sbm.cell.y = ssh.posY;
+				//sbm.stats = ssh.sms;
 				shipMatrix.Add(sbm);
 			}
 		}
@@ -140,13 +132,9 @@ public class BuilderGrid : MonoBehaviour {
 			if(ship.Count>0){
 				foreach(ShipSaveHolder ssh in ship){
 					ShipBodyMaterial sbm = new ShipBodyMaterial();
-					sbm.cell.col.r = ssh.cr;
-					sbm.cell.col.g = ssh.cg;
-					sbm.cell.col.b = ssh.cb;
-					sbm.cell.col.a = ssh.ca;
-					sbm.cell.pos.x = ssh.posX;
-					sbm.cell.pos.y = ssh.posY;
-					sbm.stats = ssh.sms;
+					sbm.cell.x = ssh.posX;
+					sbm.cell.y = ssh.posY;
+					//sbm.stats = ssh.sms;
 					shipMatrix.Add(sbm);
 				}
 			}
@@ -187,9 +175,5 @@ public class BuilderGrid : MonoBehaviour {
 class ShipSaveHolder{
 	public float posX;
 	public float posY;
-	public float cr;
-	public float cg;
-	public float cb;
-	public float ca;
-	public ShipMaterialStats sms;
+	//public ShipMaterialStats sms;
 }

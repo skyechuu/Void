@@ -3,13 +3,7 @@ using System.Collections;
 using System;
 
 [System.Serializable]
-public struct ShipMatrixCell
-{	
-	public Vector3 pos;
-    public Color col;
-}
 
-[System.Serializable]
 public class ShipMaterialStats 
 {
 	public int id;
@@ -22,14 +16,15 @@ public class ShipMaterialStats
 
 [System.Serializable]
 public class ShipBodyMaterial {
-	public ShipMatrixCell cell;
+	public Vector3 cell;
 	public ShipMaterialStats stats;
 }
 
 [System.Serializable]
 public class ShipMaterialHolder : MonoBehaviour {
 	
-	public ShipMatrixCell cell;
+	public int materialID;
+	public Vector3 cell;
 	public ShipMaterialStats stats;
 	
 
